@@ -24,9 +24,16 @@ public class MainActivity extends AppCompatActivity implements ListFragment.List
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+         DataGetter dg = new DataGetter("",285);
+         String query = "";
+         String json = dg.GetData(query);
+
+
         ListFragment frgListado
                 =(ListFragment)getSupportFragmentManager()
                 .findFragmentById(R.id.Frg_list);
+
 
         mService.download();
         frgListado.setAnimalListener(this);
