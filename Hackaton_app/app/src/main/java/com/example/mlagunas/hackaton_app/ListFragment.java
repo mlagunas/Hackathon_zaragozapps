@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -18,6 +19,7 @@ public class ListFragment extends Fragment {
 
     private ListView lstListado;
     private Animal[] data;
+    private ListListener listener;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -34,33 +36,28 @@ public class ListFragment extends Fragment {
         super.onActivityCreated(state);
         lstListado = (ListView)getView().findViewById(R.id.list_animales);
         data = new Animal[2];
-        data[0] = new Animal("","","","","","","","",0,"perro","pimpampum","","","","");
-        data[1] = new Animal("","","","","","","","",0,"perra","bocadillodeatun","","","","");
-        lstListado.setAdapter(new AdaptadorAnimales(this));
+        data[0] = new Animal("","","","","","","ASDASFDFADAFDSFDSASFDFDS","",0,"perro","pimpampum","","","","");
+        data[1] = new Animal("","","","","","","QWEQWEWQQWEQWEQEWEQWQEWQEWEQW","",0,"perra","bocadillodeatun","","","","");
+        lstListado.setAdapter(new AdapterAnimales(this,data));
+
+
+        lstListado.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> list, View view, int pos, long id) {
+                if (listener != null) {
+                    listener.onAnimalSelected(
+                            (Animal) lstListado.getAdapter().getItem(pos));
+                }
+            }
+        });
     }
 
+    public interface ListListener {
+        void onAnimalSelected(Animal a);
+    }
 
-    class AdaptadorAnimales extends ArrayAdapter<Animal>{
-
-        Activity context;
-
-        AdaptadorAnimales(Fragment context) {
-            super(context.getActivity(), R.layout.list_animales, data);
-            this.context = context.getActivity();
-        }
-
-        public View getView(int position, View convertView, ViewGroup parent) {
-            LayoutInflater inflater = context.getLayoutInflater();
-            View item = inflater.inflate(R.layout.list_animales, null);
-
-            TextView lblDe = (TextView) item.findViewById(R.id.lblnombre);
-            lblDe.setText(data[position].getNombre());
-
-            TextView lblAsunto = (TextView) item.findViewById(R.id.lblraza);
-            lblAsunto.setText(data[position].getRaza());
-
-            return (item);
-        }
+    public void setAnimalListener(ListListener listener) {
+        this.listener=listener;
     }
 
 }
