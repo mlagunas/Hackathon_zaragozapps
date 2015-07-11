@@ -13,8 +13,7 @@ import com.example.mlagunas.hackaton_app.Objects.Animal;
 import com.example.mlagunas.hackaton_app.R;
 
 public class MainActivity extends AppCompatActivity implements ListFragment.ListListener {
-
-    MyService mService;
+    
     boolean mBound = false;
 
     @Override
@@ -28,12 +27,6 @@ public class MainActivity extends AppCompatActivity implements ListFragment.List
 
         frgListado.setAnimalListener(this);
     }
-
-
-
-
-
-
 
 
     @Override
