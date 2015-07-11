@@ -9,6 +9,24 @@ public class Animal {
     private String ficha, raza, fechaIngreso, sexo, edad, tamanio, foto,
     nombre, especie, color, perdido, disponible, observaciones, fechaNacimiento;
 
+    /**
+     *
+     * @param ficha
+     * @param fechaNacimiento
+     * @param perdido
+     * @param tamanio
+     * @param sexo
+     * @param fechaIngreso
+     * @param observaciones
+     * @param disponible
+     * @param id
+     * @param raza
+     * @param nombre
+     * @param color
+     * @param edad
+     * @param foto
+     * @param especie
+     */
     public Animal(String ficha, String fechaNacimiento,
                   String perdido, String tamanio,
                   String sexo, String fechaIngreso, String observaciones,
