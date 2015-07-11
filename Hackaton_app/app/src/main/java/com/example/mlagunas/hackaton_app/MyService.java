@@ -1,18 +1,11 @@
 package com.example.mlagunas.hackaton_app;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Random;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
-
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Binder;
@@ -20,12 +13,13 @@ import android.os.IBinder;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
-
 /**
  * Created by mlagunas on 11/07/15.
  */
 public class MyService extends Service {
-    public MyService() {
+    private Context context;
+    public MyService(Context context) {
+        this.context = context;
     }
 
     // Binder given to clients
@@ -64,7 +58,6 @@ public class MyService extends Service {
                 for (String url : urls) {
                     DataGetter dg = new DataGetter(url, 285);
                     response =  dg.GetData("Select * from result;");
-
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -75,16 +68,16 @@ public class MyService extends Service {
 
         @Override
         protected void onPostExecute(String result) {
-            try {
-                ArrayList<String> data = getList(result);
+            //try {
+                //ArrayList<String> data = getList(result);
                 final Intent send = new Intent("webpage");
-                send.putExtra("txt", data);
-                LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(send);
+                send.putExtra("txt", result);
+                LocalBroadcastManager.getInstance(context).sendBroadcast(send);
 
-            } catch (JSONException e) {
+            //} catch (JSONException e) {
                 // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+              //  e.printStackTrace();
+            //}
         }
 
         private ArrayList<String>  getList(String JSONtxt) throws JSONException{
@@ -105,7 +98,7 @@ public class MyService extends Service {
         //textView = (TextView) findViewById(R.id.TextView1);
 
         DownloadWebPageTask task = new DownloadWebPageTask();
-        task.execute(new String[]{"http://www.iescitie.com:8080/IESCities/api"});
+        task.execute(new String[]{ "http://www.iescities.com/IESCities/api" });
 
 
     }

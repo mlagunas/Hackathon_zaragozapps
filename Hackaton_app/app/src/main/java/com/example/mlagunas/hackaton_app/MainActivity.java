@@ -25,17 +25,10 @@ public class MainActivity extends AppCompatActivity implements ListFragment.List
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-         DataGetter dg = new DataGetter("",285);
-         String query = "";
-         String json = dg.GetData(query);
-
-
         ListFragment frgListado
                 =(ListFragment)getSupportFragmentManager()
                 .findFragmentById(R.id.Frg_list);
-
-
-        mService.download();
+        mService = new MyService(this);
         frgListado.setAnimalListener(this);
     }
 
@@ -45,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements ListFragment.List
         // Bind to LocalService
         Intent intent = new Intent(this, MyService.class);
         bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
+        mService.download();
     }
 
     @Override
@@ -80,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements ListFragment.List
         public void onReceive(Context context, Intent intent) {
             // TODO Auto-generated method stub
             ;
-            Log.d("RESULTADO",intent.getDataString());
+            Log.d("RESULTADO",intent.getStringExtra("txt"));
 
         }
 
@@ -89,7 +83,6 @@ public class MainActivity extends AppCompatActivity implements ListFragment.List
     @Override
     public void onResume(){
         super.onResume();
-
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, new IntentFilter("webpage"));
     }
 
@@ -119,7 +112,6 @@ public class MainActivity extends AppCompatActivity implements ListFragment.List
     public void onAnimalSelected(Animal a) {
         boolean hayInfo =
                 (getSupportFragmentManager().findFragmentById(R.id.Frg_info) != null);
-
 
 
         if(hayInfo) {

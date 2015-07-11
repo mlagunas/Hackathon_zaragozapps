@@ -59,7 +59,7 @@ public class DataGetter {
 
             // Set some headers to inform server about the type of the content
             httpPost.setHeader("Accept", "application/json");
-            httpPost.setHeader("Content-type", "application/json");
+            httpPost.setHeader("Content-type", "text/plain");
 
             // Execute POST request to the given URL
             HttpResponse httpResponse = httpclient.execute(httpPost);
