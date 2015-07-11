@@ -12,6 +12,10 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+         DataGetter dg = new DataGetter("",285);
+         String query = "";
+         String json = dg.GetData(query);
+
     }
 
     @Override
