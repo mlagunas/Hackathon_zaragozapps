@@ -9,7 +9,7 @@
     android:baselineAligned="false">
 
 
-    <fragment class="com.example.mlagunas.hackaton_app.ListFragment"
+    <fragment class="com.example.mlagunas.hackaton_app.Fragments.ListFragment"
         android:id="@+id/Frg_list"
         android:layout_width="0dp"
         android:layout_height="515dp"
