@@ -9,12 +9,12 @@ public class Animal {
     private String ficha, raza, fechaIngreso, sexo, edad, tamanio, foto,
     nombre, especie, color, perdido, disponible, observaciones, fechaNacimiento;
 
-    public Animal(int id, String ficha, String raza,
-                  String fechaIngreso, String sexo,
-                  String edad, String tamanio, String foto,
-                  String nombre, String especie, String color,
-                  String perdido, String disponible,
-                  String observaciones, String fechaNacimiento) {
+    public Animal(String ficha, String fechaNacimiento,
+                  String perdido, String tamanio,
+                  String sexo, String fechaIngreso, String observaciones,
+                  String disponible, int id, String raza,
+                  String nombre, String color,
+                  String edad, String foto, String especie) {
         this.id = id;
         this.ficha = ficha;
         this.raza = raza;
