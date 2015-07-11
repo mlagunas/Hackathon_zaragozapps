@@ -2,6 +2,7 @@ package com.example.mlagunas.hackaton_app.Adapter;
 
 import android.app.Activity;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 import com.example.mlagunas.hackaton_app.Objects.Animal;
 import com.example.mlagunas.hackaton_app.R;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,9 +22,9 @@ import java.util.List;
 public class AdapterAnimales extends ArrayAdapter<Animal> {
 
     private Activity context;
-    private List<Animal> data;
+    private ArrayList<Animal> data;
 
-    public AdapterAnimales(Fragment context, List<Animal> data) {
+    public AdapterAnimales(Fragment context, ArrayList<Animal> data) {
 
         super(context.getActivity(), R.layout.list_animales, data);
         this.data = data;
@@ -39,5 +42,17 @@ public class AdapterAnimales extends ArrayAdapter<Animal> {
         lblAsunto.setText(data.get(position).getRaza());
 
         return (item);
+    }
+
+    public void setData(ArrayList<Animal> d){
+        this.data = d;
+        super.
+        notifyDataSetChanged();
+        Log.d("LONGITUDadapter", data.size() + " ");
+        Log.d("COLORs", data.get(10).getColor());
+
+
+
+
     }
 }

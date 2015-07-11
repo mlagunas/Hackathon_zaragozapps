@@ -1,5 +1,6 @@
 package com.example.mlagunas.hackaton_app.Fragments;
 
+import android.app.ProgressDialog;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -40,7 +41,8 @@ public class ListFragment extends Fragment {
     private ArrayList<Animal> data;
     private ListListener listener;
     private Gson gson;
-    AdapterAnimales a;
+    AdapterAnimales adapter;
+    ProgressDialog p;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -48,6 +50,7 @@ public class ListFragment extends Fragment {
                              Bundle savedInstanceState) {
         gson = new Gson();
         data = new ArrayList<>();
+        adapter = new AdapterAnimales(this,data);
         return inflater.inflate(R.layout.fragment_list, container, false);
     }
 
@@ -78,20 +81,22 @@ public class ListFragment extends Fragment {
                         e.printStackTrace();
 
                     }
-                }catch (IOException e) {
+                } catch (IOException e) {
                     e.printStackTrace();
 
                 }
-                String resultado = sb.toString();
-                resultado = resultado.replace("{}", "null");
+                String resultado = sb.toString().replace("{}", "null");
                 AnimalRequest animalRequest = gson.fromJson(resultado, AnimalRequest.class); //  <--- Esto es el resultado final
-                Log.d("RESULT",animalRequest.getRows().toString());
+                //Log.d("RESULT", animalRequest.getRows().toString());
                 data = animalRequest.getRows();
-                lstListado.refreshDrawableState();
-                a.notifyDataSetChanged();
+                Log.d("LONGITUD", data.size()+" ");
+                for(Animal a: data){
+                    adapter.add(a);
+                }
+
+                adapter.notifyDataSetChanged();
+                p.dismiss();
             }
-
-
             @Override
             public void failure(RetrofitError error) {
                 Log.v("TAG", "Error: " + error.getMessage());
@@ -105,8 +110,13 @@ public class ListFragment extends Fragment {
         super.onActivityCreated(state);
         restService();
         lstListado = (ListView)getView().findViewById(R.id.list_animales);
-        a = new AdapterAnimales(this, data);
-        lstListado.setAdapter(a);
+        adapter = new AdapterAnimales(this, data);
+        lstListado.setAdapter(adapter);
+        p = new ProgressDialog(this.getActivity());
+        p.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        p.setTitle("Loading");
+        p.setMessage("Wait while loading...");
+        p.show();
 
         lstListado.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

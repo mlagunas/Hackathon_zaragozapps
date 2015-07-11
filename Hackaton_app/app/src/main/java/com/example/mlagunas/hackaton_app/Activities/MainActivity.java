@@ -5,16 +5,14 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import com.example.mlagunas.hackaton_app.Fragments.InformationFragment;
 import com.example.mlagunas.hackaton_app.Fragments.ListFragment;
-import com.example.mlagunas.hackaton_app.MyService.LocalBinder;
 import com.example.mlagunas.hackaton_app.Objects.Animal;
 import com.example.mlagunas.hackaton_app.R;
 
 public class MainActivity extends AppCompatActivity implements ListFragment.ListListener {
 
-    MyService mService;
+
     boolean mBound = false;
 
     @Override
