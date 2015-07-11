@@ -12,9 +12,6 @@ import com.example.mlagunas.hackaton_app.R;
 
 public class MainActivity extends AppCompatActivity implements ListFragment.ListListener {
 
-
-    boolean mBound = false;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,12 +23,6 @@ public class MainActivity extends AppCompatActivity implements ListFragment.List
 
         frgListado.setAnimalListener(this);
     }
-
-
-
-
-
-
 
 
     @Override
