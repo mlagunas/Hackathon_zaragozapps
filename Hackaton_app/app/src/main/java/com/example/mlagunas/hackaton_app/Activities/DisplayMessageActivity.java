@@ -1,10 +1,15 @@
 package com.example.mlagunas.hackaton_app.Activities;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mlagunas.hackaton_app.R;
 
@@ -13,15 +18,31 @@ public class DisplayMessageActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_display_message);
+        setContentView(R.layout.activity_display_message);
 
-        // Create the text view
-        TextView textView = new TextView(this);
-        textView.setTextSize(40);
-        textView.setText("Esto hay que modificarlo");
+        EditText nombre = (EditText) findViewById(R.id.Name);
+        //nombre.getText();
 
-        // Set the text view as the activity layout
-        setContentView(textView);
+        EditText email = (EditText)findViewById(R.id.Email);
+        //email.getText();
+
+        EditText telefono = (EditText)findViewById(R.id.Phone);
+        //telefono.getText();
+
+        EditText mensaje = (EditText)findViewById(R.id.bodymessage);
+        //mensaje.getText();
+
+        Button btnSend = (Button)findViewById(R.id.btnSend);
+
+
+    }
+
+    /** Called when the user clicks the Send button */
+    public void sendMessage(View view) {
+        Toast.makeText(getApplicationContext(), " Tu mensaje ha sido enviado :)", Toast.LENGTH_LONG).show();
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
 
