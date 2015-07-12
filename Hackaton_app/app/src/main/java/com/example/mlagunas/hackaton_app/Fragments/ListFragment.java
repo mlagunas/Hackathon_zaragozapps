@@ -1,8 +1,9 @@
 package com.example.mlagunas.hackaton_app.Fragments;
 
+import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.os.Handler;
-import android.support.v4.app.Fragment;
+
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.Editable;
@@ -61,10 +62,10 @@ public class ListFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         data = new ArrayList<>();
         adapter = new AdapterAnimales(this,data);
         count = 10;
-       // especie = "";
+        especie = getArguments().getString("especie");
 
-        //especie = getArguments().getString("especie");
-       // Log.d("ESPECIEfragmnt", especie);
+
+
         return inflater.inflate(R.layout.fragment_list, container, false);
 
     }
@@ -75,7 +76,7 @@ public class ListFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                 .build();
         PetService service = restAdapter.create(PetService.class);
 
-        String query = "select * from result limit "+count;
+        String query = "select * from result where especie = '"+especie+"' limit "+count;
 
         count += 10;
         TypedInput string = new TypedByteArray("text/plain",query.getBytes());
@@ -127,6 +128,7 @@ public class ListFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     public void onActivityCreated(Bundle state) {
         super.onActivityCreated(state);
         restService();
+
 
         swipeLayout = (SwipeRefreshLayout) getView().findViewById(R.id.refresh_layout);
         swipeLayout.setOnRefreshListener(this);

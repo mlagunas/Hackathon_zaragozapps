@@ -1,5 +1,7 @@
 package com.example.mlagunas.hackaton_app.Activities;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Debug;
@@ -23,19 +25,41 @@ public class ListActivity extends AppCompatActivity implements ListFragment.List
         setContentView(R.layout.activity_main);
 
        // Log.d("INTENT",getIntent().toString());
-       // String especie = getIntent().getStringExtra("especie");
+
+
+        String especie = getIntent().getStringExtra("especie");
+        Log.d("ESPECIEmainactivity", especie);
+
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        ListFragment fragment = new ListFragment();
+
+        Bundle bundle = new Bundle();
+        bundle.putString("especie", especie);
+
+        fragment.setArguments(bundle);
+        fragment.setAnimalListener(this);
+
+        fragmentTransaction.replace(R.id.Frg_list,fragment);
+        fragmentTransaction.commit();
+
+         /*
 
         //Bundle bundle = new Bundle();
        // bundle.putString("especie", especie);
 
 
         ListFragment frgListado
-                =(ListFragment)getSupportFragmentManager()
+                =(ListFragment)getFragmentManager()
                 .findFragmentById(R.id.Frg_list);
-       // Log.d("ESPECIEmainactivity", especie);
+        String especie = getIntent().getStringExtra("especie");
 
-       // frgListado.setArguments(bundle);
-        frgListado.setAnimalListener(this);
+        Bundle bundle = new Bundle();
+        bundle.putString("especie", especie);
+
+        frgListado.setArguments(bundle);
+        frgListado.setAnimalListener(this);*/
     }
 
 
