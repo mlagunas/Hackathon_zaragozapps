@@ -21,7 +21,7 @@ public class CreateActivity extends ActionBarActivity {
     public void sendMessage(View view) {
         Toast.makeText(getApplicationContext(), "Animal añadido satisfactoriamente", Toast.LENGTH_LONG).show();
 
-        Intent intent = new Intent(this, ListActivity.class);
+        Intent intent = new Intent(this, AdopcionActivity.class);
         startActivity(intent);
     }
 
