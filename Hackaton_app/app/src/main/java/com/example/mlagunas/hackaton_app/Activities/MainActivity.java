@@ -24,10 +24,12 @@ public class MainActivity extends AppCompatActivity implements ListFragment.List
         Bundle bundle = new Bundle();
         bundle.putString("especie", especie);
 
+
         ListFragment frgListado
                 =(ListFragment)getSupportFragmentManager()
                 .findFragmentById(R.id.Frg_list);
         Log.d("ESPECIEmainactivity", especie);
+
         frgListado.setArguments(bundle);
         frgListado.setAnimalListener(this);
     }
@@ -63,15 +65,22 @@ public class MainActivity extends AppCompatActivity implements ListFragment.List
 
         if(hayInfo) {
             ((InformationFragment)getSupportFragmentManager()
-                    .findFragmentById(R.id.Frg_info)).mostrarDetalle(a.getFoto(),a.getObservaciones(),a.getNombre(),a.getColor(),a.getRaza());
+                    .findFragmentById(R.id.Frg_info)).mostrarDetalle(a.getFoto(),a.getObservaciones(),a.getNombre(),a.getColor(),a.getRaza(),a.getTamanio(),a.getEdad());
         }
         else {
             Intent i = new Intent(this, InfoActivity.class);
             i.putExtra("foto", a.getFoto());
             i.putExtra("descripcion", a.getObservaciones());
-            i.putExtra("nombre",a.getNombre());
+            if (a.getNombre()==null || a.getNombre().equals("")){
+                i.putExtra("nombre","Sin nombre");
+            }else{
+                i.putExtra("nombre",a.getNombre());
+            }
+
             i.putExtra("color", a.getColor());
-            i.putExtra("raza",a.getRaza());
+            i.putExtra("raza", a.getRaza());
+            i.putExtra("tamanio",a.getTamanio());
+            i.putExtra("edad",a.getEdad());
             startActivity(i);
 
         }

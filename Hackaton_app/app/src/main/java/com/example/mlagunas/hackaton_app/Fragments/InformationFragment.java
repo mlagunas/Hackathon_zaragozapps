@@ -39,13 +39,12 @@ public class InformationFragment extends Fragment {
                              Bundle savedInstanceState) {
 
 
-
         return inflater.inflate(R.layout.fragment_information, container, false);
     }
 
 
 
-    public void mostrarDetalle(String imagen,String descripcion, String nombre, String color, String raza) {
+    public void mostrarDetalle(String imagen,String descripcion, String nombre, String color, String raza,String tamanio, String edad) {
 
 
         ImageButton img = (ImageButton)getView().findViewById(R.id.imageAnimal);
@@ -64,6 +63,12 @@ public class InformationFragment extends Fragment {
 
         TextView txtRaza = (TextView)getView().findViewById(R.id.textRaza);
         txtRaza.setText(raza);
+
+        TextView txtTam = (TextView)getView().findViewById(R.id.textTamanio);
+        txtTam.setText(tamanio);
+
+        TextView txtEdad = (TextView)getView().findViewById(R.id.textEdad);
+        txtEdad.setText(edad);
 
         Button btnSend = (Button) getView().findViewById(R.id.btnSend);
 

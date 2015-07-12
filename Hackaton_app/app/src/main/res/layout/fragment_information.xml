@@ -1,34 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/Frg_info"
+    class="com.example.mlagunas.hackaton_app.Fragments.InformationFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1"
-    android:id="@+id/Frg_info">
+    android:orientation="vertical"
+    android:weightSum="1">
     <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/scroll"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="654dp"
+        android:layout_height="wrap_content"
         android:weightSum="1">
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="218dp"
+            android:layout_height="274dp"
             android:weightSum="1">
 
             <ImageButton
                 android:layout_width="match_parent"
-                android:layout_height="fill_parent"
+                android:layout_height="match_parent"
                 android:scaleType="fitXY"
                 android:id="@+id/imageAnimal"
                 android:layout_gravity="center_horizontal"
-                android:layout_weight="1.25"
                 android:background="#ffffffff" />
         </LinearLayout>
 
@@ -145,6 +147,62 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Tamaño"
+                android:id="@+id/textView5"
+                android:paddingRight="30dp"
+                android:paddingLeft="30dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Medium Text"
+                android:id="@+id/textTamanio"
+                android:paddingLeft="35dp"
+                android:textColor="#ff747474" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Edad"
+                android:id="@+id/textView6"
+                android:paddingRight="30dp"
+                android:paddingLeft="30dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Medium Text"
+                android:id="@+id/textEdad"
+                android:paddingLeft="35dp"
+                android:textColor="#ff747474" />
+
+        </LinearLayout>
+
         <Button android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btnSend"
@@ -153,7 +211,8 @@
             android:layout_gravity="right"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:onClick="sendMessage">
         </Button>
     </LinearLayout>
     </ScrollView>
