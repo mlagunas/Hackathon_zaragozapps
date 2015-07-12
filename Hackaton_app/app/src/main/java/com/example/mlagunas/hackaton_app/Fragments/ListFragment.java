@@ -15,7 +15,6 @@ import android.widget.AdapterView;
 
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Spinner;
 
 
 import com.example.mlagunas.hackaton_app.Adapter.AdapterAnimales;
@@ -52,6 +51,7 @@ public class ListFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     private EditText inputSearch;
     private SwipeRefreshLayout swipeLayout;
     int count;
+    String especie;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -61,6 +61,10 @@ public class ListFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         data = new ArrayList<>();
         adapter = new AdapterAnimales(this,data);
         count = 10;
+        especie = "";
+
+        especie = getArguments().getString("especie");
+        Log.d("ESPECIEfragmnt", especie);
         return inflater.inflate(R.layout.fragment_list, container, false);
 
     }
@@ -73,7 +77,9 @@ public class ListFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                 .build();
         PetService service = restAdapter.create(PetService.class);
 
-        String query = "select * from result limit "+count;
+        String query = "select * from result"+
+                " where especie = '" + especie + " '" +
+                " limit =" + count;
         count += 10;
         TypedInput string = new TypedByteArray("text/plain",query.getBytes());
         service.listAnimals(string, new Callback<Response>() {
@@ -124,12 +130,14 @@ public class ListFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     public void onActivityCreated(Bundle state) {
         super.onActivityCreated(state);
         restService();
+
         swipeLayout = (SwipeRefreshLayout) getView().findViewById(R.id.refresh_layout);
         swipeLayout.setOnRefreshListener(this);
         swipeLayout.setColorScheme(android.R.color.holo_blue_bright,
                 android.R.color.holo_green_light,
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
+
         lstListado = (ListView)getView().findViewById(R.id.list_animales);
         adapter = new AdapterAnimales(this, data);
         lstListado.setAdapter(adapter);

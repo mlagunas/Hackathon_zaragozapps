@@ -2,7 +2,9 @@ package com.example.mlagunas.hackaton_app.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Debug;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.example.mlagunas.hackaton_app.Fragments.InformationFragment;
@@ -17,10 +19,16 @@ public class MainActivity extends AppCompatActivity implements ListFragment.List
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        String especie = getIntent().getStringExtra("especie");
+
+        Bundle bundle = new Bundle();
+        bundle.putString("especie", especie);
+
         ListFragment frgListado
                 =(ListFragment)getSupportFragmentManager()
                 .findFragmentById(R.id.Frg_list);
-
+        Log.d("ESPECIEmainactivity", especie);
+        frgListado.setArguments(bundle);
         frgListado.setAnimalListener(this);
     }
 
