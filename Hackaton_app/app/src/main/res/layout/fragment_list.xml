@@ -1,24 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/Frg_list"
+    class="com.example.mlagunas.hackaton_app.Fragments.ListFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/Frg_list"
-    android:clipToPadding="false"
-    class= "com.example.mlagunas.hackaton_app.Fragments.ListFragment"
-    >
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
 
     <EditText
+        android:id="@+id/editText"
         android:layout_width="match_parent"
-        android:layout_height="68dp"
-        android:id="@+id/editText" />
+        android:layout_height="68dp" />
 
-    <ListView
-        android:id="@+id/list_animales"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refresh_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:paddingBottom="16dp"
-        android:paddingTop="16dp"/>
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/list_animales"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:divider="@null"
+            android:drawSelectorOnTop="true"
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp" />
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </LinearLayout>

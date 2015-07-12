@@ -35,16 +35,18 @@ public class AdapterAnimales extends ArrayAdapter<Animal> {
 
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        if(data!=null && position<data.size()) {
+        if(data.size()>0 && position<data.size()) {
 
             LayoutInflater inflater = context.getLayoutInflater();
             View item = inflater.inflate(R.layout.list_animales, null);
 
             TextView lblDe = (TextView) item.findViewById(R.id.lblespecie);
-            lblDe.setText(data.get(position).getEspecie());
+            String especie = data.get(position).getEspecie();
+            lblDe.setText(especie.charAt(0) + especie.substring(1,especie.length()).toLowerCase());
 
             TextView lblAsunto = (TextView) item.findViewById(R.id.lblraza);
-            lblAsunto.setText(data.get(position).getRaza());
+            String raza = data.get(position).getRaza();
+            lblAsunto.setText(raza.charAt(0) + raza.substring(1,raza.length()).toLowerCase());
 
             return (item);
         }

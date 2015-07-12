@@ -1,8 +1,10 @@
 package com.example.mlagunas.hackaton_app.Fragments;
 
 import android.app.ProgressDialog;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -39,7 +41,7 @@ import retrofit.mime.TypedInput;
 /**
  * Created by mlagunas on 11/07/15.
  */
-public class ListFragment extends Fragment {
+public class ListFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     private ListView lstListado;
     private ArrayList<Animal> data;
@@ -48,6 +50,7 @@ public class ListFragment extends Fragment {
     AdapterAnimales adapter;
     ProgressDialog p;
     private EditText inputSearch;
+    private SwipeRefreshLayout swipeLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -56,6 +59,7 @@ public class ListFragment extends Fragment {
         gson = new Gson();
         data = new ArrayList<>();
         adapter = new AdapterAnimales(this,data);
+
         return inflater.inflate(R.layout.fragment_list, container, false);
     }
 
@@ -65,7 +69,7 @@ public class ListFragment extends Fragment {
                 .build();
         PetService service = restAdapter.create(PetService.class);
 
-        String query = "select * from result";
+        String query = "select * from result limit 10";
         TypedInput string = new TypedByteArray("text/plain",query.getBytes());
         service.listAnimals(string, new Callback<Response>() {
             public void success(Response result, Response response) {
@@ -114,6 +118,12 @@ public class ListFragment extends Fragment {
     public void onActivityCreated(Bundle state) {
         super.onActivityCreated(state);
         restService();
+        swipeLayout = (SwipeRefreshLayout) getView().findViewById(R.id.refresh_layout);
+        swipeLayout.setOnRefreshListener(this);
+        swipeLayout.setColorScheme(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
         lstListado = (ListView)getView().findViewById(R.id.list_animales);
         adapter = new AdapterAnimales(this, data);
         lstListado.setAdapter(adapter);
@@ -157,6 +167,16 @@ public class ListFragment extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public void onRefresh() {
+        new Handler().postDelayed(new Runnable() {
+            @Override public void run() {
+                restService();
+                swipeLayout.setRefreshing(false);
+            }
+        }, 5000);
     }
 
     public interface ListListener {

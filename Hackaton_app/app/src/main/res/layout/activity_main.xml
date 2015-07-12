@@ -1,16 +1,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1"
-    tools:context=".MainActivity"
     android:baselineAligned="false"
-    android:clipToPadding="false">
+    tools:context=".MainActivity">
 
 
-    <fragment class="com.example.mlagunas.hackaton_app.Fragments.ListFragment"
+    <fragment
         android:id="@+id/Frg_list"
-        android:layout_width="0dp"
-        android:layout_height="515dp"
-        android:layout_weight="1.08" />
+        class="com.example.mlagunas.hackaton_app.Fragments.ListFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>
