@@ -51,6 +51,7 @@ public class ListFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     ProgressDialog p;
     private EditText inputSearch;
     private SwipeRefreshLayout swipeLayout;
+    int count;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -59,9 +60,12 @@ public class ListFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         gson = new Gson();
         data = new ArrayList<>();
         adapter = new AdapterAnimales(this,data);
-
+        count = 10;
         return inflater.inflate(R.layout.fragment_list, container, false);
+
     }
+
+
 
     private void restService(){
         RestAdapter restAdapter = new RestAdapter.Builder()
@@ -69,7 +73,8 @@ public class ListFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                 .build();
         PetService service = restAdapter.create(PetService.class);
 
-        String query = "select * from result limit 10";
+        String query = "select * from result limit "+count;
+        count += 10;
         TypedInput string = new TypedByteArray("text/plain",query.getBytes());
         service.listAnimals(string, new Callback<Response>() {
             public void success(Response result, Response response) {
@@ -105,6 +110,7 @@ public class ListFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
                 adapter.notifyDataSetChanged();
                 p.dismiss();
+                swipeLayout.setRefreshing(false);
             }
             @Override
             public void failure(RetrofitError error) {
@@ -174,7 +180,7 @@ public class ListFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         new Handler().postDelayed(new Runnable() {
             @Override public void run() {
                 restService();
-                swipeLayout.setRefreshing(false);
+
             }
         }, 5000);
     }
