@@ -40,7 +40,7 @@ public class DisplayMessageActivity extends ActionBarActivity {
     public void sendMessage(View view) {
         Toast.makeText(getApplicationContext(), " Tu mensaje ha sido enviado :)", Toast.LENGTH_LONG).show();
 
-        Intent intent = new Intent(this, ListActivity.class);
+        Intent intent = new Intent(this, AdopcionActivity.class);
         startActivity(intent);
     }
 
