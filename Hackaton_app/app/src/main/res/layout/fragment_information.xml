@@ -22,16 +22,15 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="218dp"
+            android:layout_height="274dp"
             android:weightSum="1">
 
             <ImageButton
                 android:layout_width="match_parent"
-                android:layout_height="fill_parent"
+                android:layout_height="match_parent"
                 android:scaleType="fitXY"
                 android:id="@+id/imageAnimal"
                 android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
                 android:background="#ffffffff" />
         </LinearLayout>
 
@@ -143,6 +142,62 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Medium Text"
                 android:id="@+id/textRaza"
+                android:paddingLeft="35dp"
+                android:textColor="#ff747474" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Tamaño"
+                android:id="@+id/textView5"
+                android:paddingRight="30dp"
+                android:paddingLeft="30dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Medium Text"
+                android:id="@+id/textTamanio"
+                android:paddingLeft="35dp"
+                android:textColor="#ff747474" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Edad"
+                android:id="@+id/textView6"
+                android:paddingRight="30dp"
+                android:paddingLeft="30dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Medium Text"
+                android:id="@+id/textEdad"
                 android:paddingLeft="35dp"
                 android:textColor="#ff747474" />
 
