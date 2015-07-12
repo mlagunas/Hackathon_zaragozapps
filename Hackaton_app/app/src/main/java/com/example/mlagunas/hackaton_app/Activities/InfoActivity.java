@@ -14,12 +14,15 @@ public class InfoActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_informacion);
+
 
         InformationFragment info =
                 (InformationFragment)getSupportFragmentManager()
                         .findFragmentById(R.id.Frg_info);
 
-        //info.mostrarDetalle(getIntent().getStringExtra("descripcion"));
+
+        info.mostrarDetalle(getIntent().getStringExtra("foto"),getIntent().getStringExtra("descripcion"),getIntent().getStringExtra("nombre"),getIntent().getStringExtra("color"),getIntent().getStringExtra("raza"));
     }
 }

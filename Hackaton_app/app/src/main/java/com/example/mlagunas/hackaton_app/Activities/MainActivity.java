@@ -49,17 +49,21 @@ public class MainActivity extends AppCompatActivity implements ListFragment.List
 
     @Override
     public void onAnimalSelected(Animal a) {
-        boolean hayInfo =
-                (getSupportFragmentManager().findFragmentById(R.id.Frg_info) != null);
+
+        boolean hayInfo = (getSupportFragmentManager().findFragmentById(R.id.Frg_info) != null);
 
 
         if(hayInfo) {
             ((InformationFragment)getSupportFragmentManager()
-                    .findFragmentById(R.id.Frg_info)).mostrarDetalle(a.getNombre());
+                    .findFragmentById(R.id.Frg_info)).mostrarDetalle(a.getFoto(),a.getObservaciones(),a.getNombre(),a.getColor(),a.getRaza());
         }
         else {
             Intent i = new Intent(this, InfoActivity.class);
+            i.putExtra("foto", a.getFoto());
             i.putExtra("descripcion", a.getObservaciones());
+            i.putExtra("nombre",a.getNombre());
+            i.putExtra("color", a.getColor());
+            i.putExtra("raza",a.getRaza());
             startActivity(i);
 
         }
