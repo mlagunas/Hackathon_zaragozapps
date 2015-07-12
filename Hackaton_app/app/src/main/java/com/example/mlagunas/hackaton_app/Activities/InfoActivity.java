@@ -21,7 +21,7 @@ public class InfoActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_informacion);
 
-
+        
         InformationFragment info =
                 (InformationFragment)getSupportFragmentManager()
                         .findFragmentById(R.id.Frg_info);

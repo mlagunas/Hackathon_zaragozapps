@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity implements ListFragment.List
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
         ListFragment frgListado
                 =(ListFragment)getSupportFragmentManager()
                 .findFragmentById(R.id.Frg_list);
