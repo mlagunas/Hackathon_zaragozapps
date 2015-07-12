@@ -103,6 +103,10 @@
         android:layout_alignLeft="@+id/Phone"
         android:layout_alignStart="@+id/Phone"
         android:hint="Escriba aquí su mensaje"
-        android:editable="false" />
+        android:editable="false"
+        android:textAlignment="gravity"
+        android:layout_alignRight="@+id/Phone"
+        android:layout_alignEnd="@+id/Phone"
+        android:gravity="top" />
 
 </RelativeLayout>
