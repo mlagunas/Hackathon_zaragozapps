@@ -21,7 +21,7 @@
         </activity>
         <activity
             android:name=".Activities.InfoActivity"
-            android:label="InfoActivity" >
+            android:label="Ficha" >
         </activity>
         <activity
             android:name=".Activities.DisplayMessageActivity"
