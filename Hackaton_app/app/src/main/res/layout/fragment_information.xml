@@ -144,6 +144,17 @@
                 android:textColor="#ff747474" />
 
         </LinearLayout>
+
+        <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnSend"
+            android:text="Contactar"
+            android:width="150dip"
+            android:layout_gravity="right"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
+        </Button>
     </LinearLayout>
     </ScrollView>
 </LinearLayout>
