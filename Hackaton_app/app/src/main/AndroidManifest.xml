@@ -32,11 +32,15 @@
         <activity
             android:name=".Activities.ListActivity"
             android:label="ZaraPet"
-            android:windowSoftInputMode="stateHidden">
+            android:windowSoftInputMode="stateHidden" >
         </activity>
         <activity
             android:name=".Activities.CreateActivity"
             android:label="Añadir nuevo" >
+        </activity>
+        <activity
+            android:name=".Activities.Main2Activity"
+            android:label="@string/title_activity_main2" >
         </activity>
     </application>
 

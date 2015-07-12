@@ -108,6 +108,7 @@ public class ListFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                 Log.d("RESULT", animalRequest.getRows().toString());
                 data = animalRequest.getRows();
                 Log.d("LONGITUD", data.size()+" ");
+                adapter.clear();
                 for(Animal a: data){
                     adapter.add(a);
                 }

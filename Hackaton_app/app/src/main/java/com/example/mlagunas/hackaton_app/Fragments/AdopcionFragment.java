@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 
 import com.example.mlagunas.hackaton_app.Interfaces.PetService;
@@ -43,6 +44,8 @@ public class AdopcionFragment extends Fragment {
     ListView listView;
     private ListListener listener;
     ProgressBar pb;
+    TextView tv;
+    ProgressDialog p;
 
     public AdopcionFragment() {
     }
@@ -93,8 +96,10 @@ public class AdopcionFragment extends Fragment {
                 AnimalRequest animalRequest = gson.fromJson(resultado, AnimalRequest.class); //  <--- Esto es el resultado final
                 a = animalRequest.getRows();
                 Log.d("SUCCESS","");
+                p.dismiss();
                 pb.setVisibility(View.GONE);
                 createAdapter();
+                tv.setVisibility(View.VISIBLE);
 
             }
             @Override
@@ -117,8 +122,14 @@ public class AdopcionFragment extends Fragment {
         especies = new ArrayList<String>();
         restService();
         adapter = new ArrayAdapter<String>(this.getActivity(),R.layout.list_dataset,R.id.lblEspecie,especies);
-
+        tv = (TextView) getView().findViewById(R.id.textView5);
         pb = (ProgressBar) getView().findViewById(R.id.marker_progress);
+
+        p = new ProgressDialog(this.getActivity());
+        p.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        p.setTitle("Loading");
+        p.setMessage("Wait while loading...");
+        p.show();
 
         listView = (ListView) getView().findViewById(R.id.list_dataset);
         listView.setAdapter(adapter);
