@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/Frg_info"
+    class="com.example.mlagunas.hackaton_app.Fragments.InformationFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1"
-    android:id="@+id/Frg_info">
+    android:orientation="vertical"
+    android:weightSum="1">
     <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/scroll"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="654dp"
+        android:layout_height="wrap_content"
         android:weightSum="1">
 
         <LinearLayout
@@ -28,7 +31,7 @@
                 android:scaleType="fitXY"
                 android:id="@+id/imageAnimal"
                 android:layout_gravity="center_horizontal"
-                android:layout_weight="1.25"
+                android:layout_weight="1"
                 android:background="#ffffffff" />
         </LinearLayout>
 
@@ -153,7 +156,8 @@
             android:layout_gravity="right"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:onClick="sendMessage">
         </Button>
     </LinearLayout>
     </ScrollView>
