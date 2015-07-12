@@ -7,6 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+
 import com.example.mlagunas.hackaton_app.Fragments.InformationFragment;
 import com.example.mlagunas.hackaton_app.Fragments.ListFragment;
 import com.example.mlagunas.hackaton_app.Objects.Animal;
@@ -56,6 +59,13 @@ public class ListActivity extends AppCompatActivity implements ListFragment.List
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    public void showCreate(MenuItem item){
+        Intent intent = new Intent(this, CreateActivity.class);
+
+        startActivity(intent);
     }
 
     @Override
