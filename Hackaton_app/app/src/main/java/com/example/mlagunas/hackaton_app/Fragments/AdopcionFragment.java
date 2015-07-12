@@ -1,5 +1,6 @@
 package com.example.mlagunas.hackaton_app.Fragments;
 
+import android.app.ProgressDialog;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+
 
 import com.example.mlagunas.hackaton_app.Interfaces.PetService;
 import com.example.mlagunas.hackaton_app.Objects.Animal;
@@ -39,6 +42,7 @@ public class AdopcionFragment extends Fragment {
     ArrayAdapter<String> adapter;
     ListView listView;
     private ListListener listener;
+    ProgressBar pb;
 
     public AdopcionFragment() {
     }
@@ -84,10 +88,12 @@ public class AdopcionFragment extends Fragment {
                     e.printStackTrace();
 
                 }
+
                 String resultado = sb.toString().replace("{}", "null");
                 AnimalRequest animalRequest = gson.fromJson(resultado, AnimalRequest.class); //  <--- Esto es el resultado final
                 a = animalRequest.getRows();
                 Log.d("SUCCESS","");
+                pb.setVisibility(View.GONE);
                 createAdapter();
 
             }
@@ -111,6 +117,8 @@ public class AdopcionFragment extends Fragment {
         especies = new ArrayList<String>();
         restService();
         adapter = new ArrayAdapter<String>(this.getActivity(),R.layout.list_dataset,R.id.lblEspecie,especies);
+
+        pb = (ProgressBar) getView().findViewById(R.id.marker_progress);
 
         listView = (ListView) getView().findViewById(R.id.list_dataset);
         listView.setAdapter(adapter);
