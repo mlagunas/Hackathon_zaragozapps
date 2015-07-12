@@ -3,13 +3,17 @@ package com.example.mlagunas.hackaton_app.Fragments;
 import android.app.ProgressDialog;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 
 import com.example.mlagunas.hackaton_app.Adapter.AdapterAnimales;
@@ -43,6 +47,7 @@ public class ListFragment extends Fragment {
     private Gson gson;
     AdapterAnimales adapter;
     ProgressDialog p;
+    private EditText inputSearch;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -112,6 +117,7 @@ public class ListFragment extends Fragment {
         lstListado = (ListView)getView().findViewById(R.id.list_animales);
         adapter = new AdapterAnimales(this, data);
         lstListado.setAdapter(adapter);
+
         p = new ProgressDialog(this.getActivity());
         p.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         p.setTitle("Loading");
@@ -125,6 +131,30 @@ public class ListFragment extends Fragment {
                     listener.onAnimalSelected(
                             (Animal) lstListado.getAdapter().getItem(pos));
                 }
+            }
+        });
+
+        inputSearch = (EditText) this.getActivity().findViewById(R.id.editText);
+        inputSearch.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
+                // TODO Auto-generated method stub
+
+                adapter.getFilter().filter(arg0);
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
+                                          int arg3) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable arg0) {
+                // TODO Auto-generated method stub
+
             }
         });
     }

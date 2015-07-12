@@ -6,9 +6,14 @@
     android:id="@+id/Frg_list"
     class= "com.example.mlagunas.hackaton_app.Fragments.ListFragment" >
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:id="@+id/editText" />
+
     <ListView
         android:id="@+id/list_animales"
         android:layout_width="wrap_content"
-        android:layout_height="591dp" />
+        android:layout_height="match_parent" />
 
 </LinearLayout>
