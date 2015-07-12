@@ -1,16 +1,12 @@
 package com.example.mlagunas.hackaton_app.Activities;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.mlagunas.hackaton_app.Fragments.AdopcionFragment;
-import com.example.mlagunas.hackaton_app.Fragments.InformationFragment;
-import com.example.mlagunas.hackaton_app.Objects.Animal;
 import com.example.mlagunas.hackaton_app.R;
 
 public class AdopcionActivity extends AppCompatActivity implements AdopcionFragment.ListListener{
@@ -52,7 +48,7 @@ public class AdopcionActivity extends AppCompatActivity implements AdopcionFragm
 
     @Override
     public void onEspecieSelected(String s) {
-        Intent i = new Intent(this, MainActivity.class);
+        Intent i = new Intent(this, ListActivity.class);
         i.putExtra("especie", s);
         startActivity(i);
 

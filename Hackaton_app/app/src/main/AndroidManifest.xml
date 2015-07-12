@@ -10,6 +10,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+
         <activity
 
             android:name=".Activities.AdopcionActivity"
@@ -19,7 +20,6 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -32,8 +32,8 @@
             android:label="@string/title_activity_display_message" >
         </activity>
         <activity
-            android:name=".Activities.MainActivity"
-            android:label="@string/title_activity_adopcion" >
+            android:name=".Activities.ListActivity"
+            android:label="ListActivity" >
         </activity>
     </application>
 

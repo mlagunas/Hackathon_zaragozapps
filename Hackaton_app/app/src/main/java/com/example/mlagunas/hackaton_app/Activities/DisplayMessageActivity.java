@@ -8,7 +8,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mlagunas.hackaton_app.R;
@@ -41,7 +40,7 @@ public class DisplayMessageActivity extends ActionBarActivity {
     public void sendMessage(View view) {
         Toast.makeText(getApplicationContext(), " Tu mensaje ha sido enviado :)", Toast.LENGTH_LONG).show();
 
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, ListActivity.class);
         startActivity(intent);
     }
 

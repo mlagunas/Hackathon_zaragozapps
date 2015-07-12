@@ -61,15 +61,13 @@ public class ListFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         data = new ArrayList<>();
         adapter = new AdapterAnimales(this,data);
         count = 10;
-        especie = "";
+       // especie = "";
 
-        especie = getArguments().getString("especie");
-        Log.d("ESPECIEfragmnt", especie);
+        //especie = getArguments().getString("especie");
+       // Log.d("ESPECIEfragmnt", especie);
         return inflater.inflate(R.layout.fragment_list, container, false);
 
     }
-
-
 
     private void restService(){
         RestAdapter restAdapter = new RestAdapter.Builder()
@@ -77,9 +75,8 @@ public class ListFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                 .build();
         PetService service = restAdapter.create(PetService.class);
 
-        String query = "select * from result"+
-                " where especie = '" + especie + " '" +
-                " limit =" + count;
+        String query = "select * from result limit "+count;
+
         count += 10;
         TypedInput string = new TypedByteArray("text/plain",query.getBytes());
         service.listAnimals(string, new Callback<Response>() {
@@ -106,8 +103,8 @@ public class ListFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
                 }
                 String resultado = sb.toString().replace("{}", "null");
-                AnimalRequest animalRequest = gson.fromJson(resultado, AnimalRequest.class); //  <--- Esto es el resultado final
-                //Log.d("RESULT", animalRequest.getRows().toString());
+                AnimalRequest animalRequest = gson.fromJson(resultado, AnimalRequest.class);
+                Log.d("RESULT", animalRequest.getRows().toString());
                 data = animalRequest.getRows();
                 Log.d("LONGITUD", data.size()+" ");
                 for(Animal a: data){
