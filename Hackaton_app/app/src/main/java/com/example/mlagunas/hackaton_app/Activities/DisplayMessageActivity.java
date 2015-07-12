@@ -15,12 +15,21 @@ public class DisplayMessageActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_display_message);
 
+        // Create the text view
         TextView textView = new TextView(this);
         textView.setTextSize(40);
-        textView.setText("Esto hay que cambiarlo");
+        textView.setText("Esto hay que modificarlo");
 
+        // Set the text view as the activity layout
         setContentView(textView);
+    }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_display_message, menu);
+        return true;
     }
 
     @Override
