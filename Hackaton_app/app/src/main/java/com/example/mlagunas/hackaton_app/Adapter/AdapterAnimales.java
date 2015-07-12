@@ -1,10 +1,11 @@
 package com.example.mlagunas.hackaton_app.Adapter;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Context;
 import android.os.Debug;
 import android.provider.SyncStateContract;
-import android.support.v4.app.Fragment;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,6 +49,11 @@ public class AdapterAnimales extends ArrayAdapter<Animal> {
         dataInit = data;
     }
 
+    @Override
+    public Animal getItem(int pos){
+        return data.get(pos);
+    }
+
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) context
@@ -57,7 +63,7 @@ public class AdapterAnimales extends ArrayAdapter<Animal> {
         }
 
             TextView lblDe = (TextView) convertView.findViewById(R.id.lblespecie);
-            String especie = data.get(position).getEspecie();
+            String especie = data.get(position).getSexo();
             lblDe.setText(especie.charAt(0) + especie.substring(1, especie.length()).toLowerCase());
 
             TextView lblAsunto = (TextView) convertView.findViewById(R.id.lblraza);
@@ -102,7 +108,6 @@ public class AdapterAnimales extends ArrayAdapter<Animal> {
         @Override
         protected void publishResults(CharSequence contraint, FilterResults results) {
             data = (ArrayList<Animal>) results.values;
-            Log.d("CUENTA",data.size()+" ");
             if (results.count > 0) {
                 notifyDataSetChanged();
             } else {
