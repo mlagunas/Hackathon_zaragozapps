@@ -40,8 +40,8 @@ public class AdapterAnimales extends ArrayAdapter<Animal> {
             LayoutInflater inflater = context.getLayoutInflater();
             View item = inflater.inflate(R.layout.list_animales, null);
 
-            TextView lblDe = (TextView) item.findViewById(R.id.lblnombre);
-            lblDe.setText(data.get(position).getNombre());
+            TextView lblDe = (TextView) item.findViewById(R.id.lblespecie);
+            lblDe.setText(data.get(position).getEspecie());
 
             TextView lblAsunto = (TextView) item.findViewById(R.id.lblraza);
             lblAsunto.setText(data.get(position).getRaza());
